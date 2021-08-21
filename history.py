@@ -1,9 +1,22 @@
 import json
 from urllib.parse import urlparse
 
+
+print("Filtering: how many entries of a particular website are required before being included in the output file? Any amount below this will be omitted. 30 is in my experience a nice starting point: ", end = "")
+def ThresholdPrompt():
+
+    try:
+        threshold = int(input())
+    except ValueError:
+        print("Input must be a natural number. Try again: ", end = "")
+        threshold = ThresholdPrompt()
+    
+    return threshold
+
+threshold = ThresholdPrompt()
 rank = {}
 
-with open("history.json", encoding="UTF-8") as f: # open json file exported from browser extension: https://chrome.google.com/webstore/detail/export-historybookmarks-t/dcoegfodcnjofhjfbhegcgjgapeichlf
+with open("chrome_history.json", encoding="UTF-8") as f: # open json file exported from browser extension: https://chrome.google.com/webstore/detail/export-historybookmarks-t/dcoegfodcnjofhjfbhegcgjgapeichlf
     data = json.load(f) # parse file
 
     for e in data: # Iterate through each website visit
@@ -26,10 +39,10 @@ for w in sorted_keys:
 
 
 #Saving
-csv = "" # String to save to csv file
+csv = "" # String to be saved to csv file
 
 for site in sorted_dict: # Filtering out unfrequent sites.
-    if sorted_dict[site] > 30:
+    if sorted_dict[site] > threshold:
         csv = csv + (f"{site}; {sorted_dict[site]}\n") 
 
 with open('rank.csv', 'w') as f: # Exporting to csv file
