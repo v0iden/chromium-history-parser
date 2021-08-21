@@ -1,6 +1,6 @@
 # Chromium history parser
 
-This is a python script that sorts your browsing history based on the number of website visits. It exports the results to a csv file, which means you can really easily make charts like the one below. It also supports filtering. For example, you can choose to omend all websites with fewer than 50 entries. This prevents the output file from being insanely long. 
+This is a python script that sorts your browsing history based on the number of website visits. It exports the results to a csv file, which means you can really easily make charts like the one below. It also supports filtering. For example, you can choose to omit all websites with fewer than 50 entries. This prevents the output file from being insanely long. 
 
 ![Chart](chart.jpg)
 
