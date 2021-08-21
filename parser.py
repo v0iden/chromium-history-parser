@@ -21,7 +21,7 @@ rank = {}
 
 try:
     with open("chrome_history.json", encoding="UTF-8") as f: # open json file exported from browser extension: https://chrome.google.com/webstore/detail/export-historybookmarks-t/dcoegfodcnjofhjfbhegcgjgapeichlf
-        data = load(f) # parse file
+        data = load(f)
 
         for e in data: # Iterate through each website visit
             url = e["url"] # Strip away unnecessary information 
@@ -34,7 +34,7 @@ try:
                 rank[website] = 1
 
 except FileNotFoundError:
-    print("Could not find file. Makek sure the chrome_history.json file is placed in this file's parent directory.")
+    print("Could not find file. Make sure the chrome_history.json file is placed in this file's parent directory.")
     exit()
 
 
